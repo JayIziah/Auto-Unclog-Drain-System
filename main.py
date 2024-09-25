@@ -40,13 +40,13 @@ def is_drain_rate_below_baseline(current_drain_rate, baseline_drain_rate):
 # Function to simulate drain compressions - unclogging process with three compressions.
 def drain_compression():
     print("Starting drain compression...\n")
-    for i in range(3):  # Perform 3 air pushes
-        print(f"Push {i+1}")
+    for push in range(3):  # Perform 3 air pushes
+        print(f"Push {push+1}")
         push_air()  # Simulate air pushing
         time.sleep(2)  # Simulate delay between each push
         return_to_start()
         time.sleep(2)  # Simulate neutral return
-        print("")  # Adds a blank line after each push
+        print("") 
 
 
 # Function to simulate three rounds of drain compressions and check if the drain is cleared.
@@ -100,17 +100,6 @@ def notify_user_for_manual_maintenance():
 
 # Main function for auto drain unclog simulation that monitors the drain status and the water level.
 def auto_drain_unclog(water_present, drain_stopped, tub_capacity, baseline_drain_rate, current_drain_rate):
-    """
-    Main simulation function that monitors the drain status and water level.
-    
-    Args:
-    water_present (bool): Whether water is present in the tub
-    drain_stopped (bool): Whether the drain is intentionally stopped
-    tub_capacity (float): The established capacity of the bathtub in liters
-    baseline_drain_rate (float): Baseline drain rate for comparison
-    current_drain_rate (float): Simulated current drain rate (based on drain_rate_factor)
-    
-    """
     if detect_water(water_present):
         print("Water detected. Monitoring drain status...\n")
 
